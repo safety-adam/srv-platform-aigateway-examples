@@ -24,15 +24,19 @@ func main() {
 	outCtx := getOutgoingContext(adminToken)
 
 	// Complete text example
-	completeText(outCtx, aiClient)
+	//completeTextStructured(outCtx, aiClient)
+
+	// Complete text with a structured response
+	//completeTextStructured(outCtx, aiClient)
 
 	// Extract text from image example
 	extractTextFromImage(outCtx, aiClient)
 }
 
+// This is a simple example of how to generate text using only a prompt.
 func completeText(ctx context.Context, c aigateway.AIGatewayClient) {
 	req := &aigateway.CompleteTextRequest{
-		Prompt: "Write a short poem about a panda.",
+		Prompt: "Write a short funny poem about a panda.",
 	}
 	resp, err := c.CompleteText(ctx, req)
 	if err != nil {
@@ -41,6 +45,27 @@ func completeText(ctx context.Context, c aigateway.AIGatewayClient) {
 	fmt.Println(resp.Raw)
 }
 
+// This example demonstrates how to request responses in a structured form by specifying a format for the response.
+// The format is given in the form of a JSON example.
+// The service will attempt to generate an ARRAY of responses in this format.
+// The example should represent ONLY A SINGLE ELEMENT of the array.
+func completeTextStructured(ctx context.Context, c aigateway.AIGatewayClient) {
+	req := &aigateway.CompleteTextRequest{
+		Prompt:          "You are an expert health and safety template engine. Create a template to clean a kitchen which asks 10 questions.",
+		ResponseExample: `{"question": "Has the fridge been cleaned?"}`,
+	}
+	resp, err := c.CompleteText(ctx, req)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	for i := 0; i < len(resp.Structured); i++ {
+		fmt.Printf("%d. %s\n", i+1, resp.Structured[i].GetFields()["question"].GetStringValue())
+	}
+}
+
+// This example demonstraits how to extract text from an image
+// The text is returned as an array of strings
 func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayClient) {
 	b, _ := ioutil.ReadFile("sample.jpg")
 
@@ -51,5 +76,8 @@ func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayClient) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(resp.TextLines)
+
+	for i := 0; i < len(resp.TextLines); i++ {
+		fmt.Printf("Line %d: %s\n", i+1, resp.TextLines[i])
+	}
 }
