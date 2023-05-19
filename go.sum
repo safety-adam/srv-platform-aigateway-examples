@@ -1,7 +1,7 @@
 bitbucket.org/atlassian/go-asap v0.0.0-20190921160616-bb88d6193af9 h1:r0ZBf30xuCvYumtaA5QmSf3L9Pao3NcUv74Z/2+peHI=
 bitbucket.org/atlassian/go-asap v0.0.0-20190921160616-bb88d6193af9/go.mod h1:trJ0VYCBGDAWSX6rLGkDbNUxwtqtRUq4/x2bXFd9lz8=
-github.com/SafetyCulture/s12-apis-go v1.203.33-pre-ats-3469.884ada23 h1:8EA8gpLCL2C9uxuordlMk494Wisn1pHnB5yVHug/iq4=
-github.com/SafetyCulture/s12-apis-go v1.203.33-pre-ats-3469.884ada23/go.mod h1:9P8Kl5UulBfyA14s68pvPJjFVccP8Cuxge/aNADL89M=
+github.com/SafetyCulture/s12-apis-go v1.203.38-pre-ats-3469.3f4e74d3 h1:mwJbcAVItNQLgFO1OoyWfGS2IGO7UsA8IChTmV8oA0Y=
+github.com/SafetyCulture/s12-apis-go v1.203.38-pre-ats-3469.3f4e74d3/go.mod h1:9P8Kl5UulBfyA14s68pvPJjFVccP8Cuxge/aNADL89M=
 github.com/SafetyCulture/s12-proto v1.26.0 h1:krpo5n+8FYJH5Qo07mIirhool3S8G14SwsFuKJ+dvHE=
 github.com/SafetyCulture/s12-proto v1.26.0/go.mod h1:ILiuc3wTtxGyCHwnzTzPcRZhMUqZFRes0Vs14U/xCHc=
 github.com/SafetyCulture/soter-jwt-go/v3 v3.5.2 h1:dZ5p6CZcJz7SKM0tz4ZVksnoY1xuj4r9gP70jU/mEXM=

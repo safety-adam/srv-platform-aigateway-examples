@@ -11,11 +11,11 @@ import (
 func getClient() aigateway.AIGatewayClient {
 	// Create an AIGateway client
 	url := fmt.Sprintf("srv-platform-aigateway-%s.scinfradev.com:443", namespace)
-	//url := "localhost:30080"
+	// url := "localhost:30080"
 	conn, err := grpc.Dial(
 		url,
 		grpc.WithTransportCredentials(credentials.NewClientTLSFromCert(nil, "")),
-		//grpc.WithTransportCredentials(insecure.NewCredentials()),
+		// grpc.WithTransportCredentials(insecure.NewCredentials()),
 	)
 	if err != nil {
 		panic(err)
