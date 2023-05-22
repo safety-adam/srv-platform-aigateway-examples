@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc/credentials"
 )
 
-func getClient() aigateway.AIGatewayClient {
+func getClient() aigateway.AIGatewayServiceClient {
 	// Create an AIGateway client
 	url := fmt.Sprintf("srv-platform-aigateway-%s.scinfradev.com:443", namespace)
 	// url := "localhost:30080"
@@ -20,5 +20,5 @@ func getClient() aigateway.AIGatewayClient {
 	if err != nil {
 		panic(err)
 	}
-	return aigateway.NewAIGatewayClient(conn)
+	return aigateway.NewAIGatewayServiceClient(conn)
 }
