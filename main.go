@@ -9,7 +9,7 @@ import (
 )
 
 var identity string = "ai-gateway-examples"
-var namespace string = "actions"
+var namespace string = "inspections2"
 
 func main() {
 	// Get an instance of an AIGateway client
@@ -24,19 +24,25 @@ func main() {
 	outCtx := getOutgoingContext(adminToken)
 
 	// Complete text example
-	//completeTextStructured(outCtx, aiClient)
+	completeText(outCtx, aiClient)
+
+	// Complete text example with a strucutred response
+	completeTextStructured(outCtx, aiClient)
 
 	// Complete text with a structured response
-	//completeTextStructured(outCtx, aiClient)
+	completeTextStructured(outCtx, aiClient)
 
 	// Extract text from image example
-	//extractTextFromImage(outCtx, aiClient)
+	extractTextFromImage(outCtx, aiClient)
 
 	// Generate an image from a prompt
 	generateImage(outCtx, aiClient)
 
 	// Detect objects in image that would fail moderation
-	// objectDetection(outCtx, aiClient)
+	objectDetection(outCtx, aiClient)
+
+	// Detect objects in image that would fail moderation
+	objectDetectionWithModeration(outCtx, aiClient)
 }
 
 // This is a simple example of how to generate text using only a prompt.
@@ -90,7 +96,7 @@ func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayClient) {
 
 func generateImage(ctx context.Context, c aigateway.AIGatewayClient) {
 	req := &aigateway.GenerateImageRequest{
-		Prompt: "Create an eye-catching image for a drone safety document that conveys the essence of safe drone operations and responsible aerial exploration, all without using any text.",
+		Prompt: "Create an eye-catching image of a drone in a city scape. The drone should be the main focus of the image.",
 	}
 	resp, err := c.GenerateImage(ctx, req)
 	if err != nil {
