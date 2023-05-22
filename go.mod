@@ -3,7 +3,7 @@ module safety-adam/ai-gateway-examples
 go 1.19
 
 require (
-	github.com/SafetyCulture/s12-apis-go v1.203.43
+	github.com/SafetyCulture/s12-apis-go v1.203.46
 	github.com/SafetyCulture/soter-jwt-go/v3 v3.5.2
 	google.golang.org/grpc v1.55.0
 )
