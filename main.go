@@ -49,7 +49,7 @@ func main() {
 }
 
 // This is a simple example of how to generate text using only a prompt.
-func completeText(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func completeText(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	req := &aigateway.CompleteTextRequest{
 		Prompt: "Write a short funny poem about a panda.",
 	}
@@ -64,7 +64,7 @@ func completeText(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
 // The format is given in the form of a JSON example.
 // The service will attempt to generate an ARRAY of responses in this format.
 // The example should represent ONLY A SINGLE ELEMENT of the array.
-func completeTextStructured(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func completeTextStructured(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	req := &aigateway.CompleteTextRequest{
 		Prompt:          "You are an expert health and safety template engine. Create a template to clean a kitchen which asks 10 questions.",
 		ResponseExample: `{"question": "Has the fridge been cleaned?"}`,
@@ -81,7 +81,7 @@ func completeTextStructured(ctx context.Context, c aigateway.NewAIGatewayService
 
 // This example demonstraits how to extract text from an image
 // The text is returned as an array of strings
-func extractTextFromImage(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	b, _ := ioutil.ReadFile("sample.jpg")
 
 	req := &aigateway.ExtractTextFromImageRequest{
@@ -97,7 +97,7 @@ func extractTextFromImage(ctx context.Context, c aigateway.NewAIGatewayServiceCl
 	}
 }
 
-func generateImage(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func generateImage(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	req := &aigateway.GenerateImageRequest{
 		Prompt: "Create an eye-catching image of a drone in a city scape. The drone should be the main focus of the image.",
 	}
@@ -109,7 +109,7 @@ func generateImage(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
 	fmt.Println(resp.ResponseUrl)
 }
 
-func objectDetection(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func objectDetection(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	b, _ := ioutil.ReadFile("sydney.jpg")
 
 	req := &aigateway.DetectObjectsInImageRequest{
@@ -126,7 +126,7 @@ func objectDetection(ctx context.Context, c aigateway.NewAIGatewayServiceClient)
 	}
 }
 
-func objectDetectionWithModeration(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func objectDetectionWithModeration(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	b, _ := ioutil.ReadFile("weapon.jpg")
 
 	req := &aigateway.DetectObjectsInImageRequest{
@@ -149,7 +149,7 @@ func objectDetectionWithModeration(ctx context.Context, c aigateway.NewAIGateway
 	}
 }
 
-func ppeDetectionWithModeration(ctx context.Context, c aigateway.NewAIGatewayServiceClient) {
+func ppeDetectionWithModeration(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 	b, _ := ioutil.ReadFile("Adam.jpg")
 
 	req := &aigateway.DetectPPEInImageRequest{
