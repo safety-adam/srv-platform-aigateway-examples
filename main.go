@@ -43,6 +43,9 @@ func main() {
 
 	// Detect objects in image that would fail moderation
 	objectDetectionWithModeration(outCtx, aiClient)
+
+	// Detect PPE equipment on people
+	ppeDetectionWithModeration(outCtx, aiClient)
 }
 
 // This is a simple example of how to generate text using only a prompt.
@@ -137,6 +140,32 @@ func objectDetectionWithModeration(ctx context.Context, c aigateway.AIGatewayCli
 	fmt.Println("Objects detected")
 	for _, o := range resp.GetObjects() {
 		fmt.Printf("%s x %d @ %f%% confidence\n", o.GetName(), o.GetCount(), o.GetConfidence())
+	}
+
+	fmt.Println()
+	fmt.Println("Moderation labels")
+	for _, o := range resp.GetModerationLabels() {
+		fmt.Printf("%s @ %f%% confidence\n", o.GetName(), o.GetConfidence())
+	}
+}
+
+func ppeDetectionWithModeration(ctx context.Context, c aigateway.AIGatewayClient) {
+	b, _ := ioutil.ReadFile("Adam.jpg")
+
+	req := &aigateway.DetectPPEInImageRequest{
+		Image: b,
+	}
+	resp, err := c.DetectPPEInImage(ctx, req)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println("PPE Detected")
+	for _, p := range resp.GetPersons() {
+		for _, parts := range p.GetParts() {
+			fmt.Printf("Body Part: name - %s, PPE Type - %s, confidence- %f%% \n", parts.GetName(), parts.GetPpeType().String(), parts.GetConfidence())
+		}
+		fmt.Printf("%d person id \n", p.GetId())
 	}
 
 	fmt.Println()
