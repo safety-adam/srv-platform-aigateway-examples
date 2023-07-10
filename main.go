@@ -32,6 +32,9 @@ func main() {
 	// Extract text from image example
 	extractTextFromImage(outCtx, aiClient)
 
+	// Extract text from a document using a stream
+	extractTextFromDocumentStreamed(outCtx, aiClient)
+
 	// Generate an image from a prompt
 	generateImage(outCtx, aiClient)
 
@@ -98,6 +101,37 @@ func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayServiceClien
 		fmt.Printf("Line %d: %s\n", i+1, resp.TextLines[i])
 	}
 	fmt.Println()
+}
+
+// This example demonstraits how to extract text from an image
+// The text is returned as an array of strings
+func extractTextFromDocumentStreamed(ctx context.Context, c aigateway.AIGatewayServiceClient) {
+	b, _ := ioutil.ReadFile("sample2.pdf")
+
+	req := &aigateway.ExtractTextFromDocumentRequest{
+		Bytes: b,
+	}
+	stream, err := c.ExtractTextFromDocumentStream(ctx, req)
+	if err != nil {
+		fmt.Println(err)
+	}
+	defer stream.CloseSend()
+
+	fmt.Println("ExtractTextFromDocumentStream example")
+	var eof bool
+	for !eof {
+		resp := &aigateway.ExtractTextFromDocumentResponse{}
+		err := stream.RecvMsg(resp)
+		eof = err == io.EOF
+		if err != nil && err != io.EOF {
+			fmt.Println(err)
+		}
+
+		for i := 0; i < len(resp.TextLines); i++ {
+			fmt.Printf("Line %d: %s\n", i+1, resp.TextLines[i])
+		}
+		fmt.Println()
+	}
 }
 
 func generateImage(ctx context.Context, c aigateway.AIGatewayServiceClient) {
