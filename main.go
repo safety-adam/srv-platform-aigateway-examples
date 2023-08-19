@@ -3,7 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
-	"io/ioutil"
+	"io"
+	"os"
 
 	"github.com/SafetyCulture/s12-apis-go/aigateway/v1"
 )
@@ -86,7 +87,7 @@ func completeTextStructured(ctx context.Context, c aigateway.AIGatewayServiceCli
 // This example demonstraits how to extract text from an image
 // The text is returned as an array of strings
 func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayServiceClient) {
-	b, _ := ioutil.ReadFile("sample.jpg")
+	b, _ := os.ReadFile("sample.jpg")
 
 	req := &aigateway.ExtractTextFromImageRequest{
 		Document: b,
@@ -106,7 +107,7 @@ func extractTextFromImage(ctx context.Context, c aigateway.AIGatewayServiceClien
 // This example demonstraits how to extract text from an image
 // The text is returned as an array of strings
 func extractTextFromDocumentStreamed(ctx context.Context, c aigateway.AIGatewayServiceClient) {
-	b, _ := ioutil.ReadFile("sample2.pdf")
+	b, _ := os.ReadFile("sample2.pdf")
 
 	req := &aigateway.ExtractTextFromDocumentRequest{
 		Bytes: b,
@@ -149,7 +150,7 @@ func generateImage(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 }
 
 func objectDetection(ctx context.Context, c aigateway.AIGatewayServiceClient) {
-	b, _ := ioutil.ReadFile("sydney.jpg")
+	b, _ := os.ReadFile("sydney.jpg")
 
 	req := &aigateway.DetectObjectsInImageRequest{
 		Image: b,
@@ -168,7 +169,7 @@ func objectDetection(ctx context.Context, c aigateway.AIGatewayServiceClient) {
 }
 
 func objectDetectionWithModeration(ctx context.Context, c aigateway.AIGatewayServiceClient) {
-	b, _ := ioutil.ReadFile("weapon.jpg")
+	b, _ := os.ReadFile("weapon.jpg")
 
 	req := &aigateway.DetectObjectsInImageRequest{
 		Image: b,
@@ -193,7 +194,7 @@ func objectDetectionWithModeration(ctx context.Context, c aigateway.AIGatewaySer
 }
 
 func ppeDetectionWithModeration(ctx context.Context, c aigateway.AIGatewayServiceClient) {
-	b, _ := ioutil.ReadFile("ppe.jpeg")
+	b, _ := os.ReadFile("ppe.jpeg")
 
 	req := &aigateway.DetectPPEInImageRequest{
 		Image: b,
