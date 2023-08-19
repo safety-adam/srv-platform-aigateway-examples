@@ -1,6 +1,6 @@
-# AI Gateway Quick start and examples
+# AIGateway quick start
 
-This respository contains examples and quick start guides for the AI Gateway. 
+This repository contains examples and quick start guides for the AI Gateway. 
 
 Follow the instructions below to get started.
 
