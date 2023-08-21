@@ -29,8 +29,8 @@ This tutorial will take you step by step through the features of the AIGateway. 
 ## Prerequisites
 
 - [Go](https://golang.org/doc/install) installed
-- AWS VPN Client installed
-- Development environment VPN configuration installed
+- [AWS VPN Client installed](https://safetyculture.atlassian.net/wiki/spaces/FE/pages/2655355089/HOWTO+Install+and+setup+AWS+VPN+Client#Install-the-client)
+- [Development environment VPN configuration installed](https://self-service.clientvpn.amazonaws.com/endpoints/cvpn-endpoint-0fef19b8165e2234f)
 - VPN connection to the development environment established
 
 ## Clone the repository
