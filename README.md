@@ -35,7 +35,7 @@ This tutorial will take you step by step through the features of the AIGateway. 
 
 ## Clone the repository
 
-Clone the repository to your local machine.
+Clone the repository's `tutorial-start` branch to your local machine.
 
 ```bash
 % git clone --branch tutorial-start git@github.com:SafetyCulture/srv-platform-aigateway.git
