@@ -38,7 +38,7 @@ This tutorial will take you step by step through the features of the AIGateway. 
 Clone the repository's `tutorial-start` branch to your local machine.
 
 ```bash
-% git clone --branch tutorial-start git@github.com:SafetyCulture/srv-platform-aigateway.git
+git clone --branch tutorial-start git@github.com:SafetyCulture/srv-platform-aigateway-examples.git
 ```
 
 ## Running the tutorial
@@ -46,7 +46,7 @@ Clone the repository's `tutorial-start` branch to your local machine.
 After each step below, run the project using the command below to see the changes.
 
 ```bash
-% go run .
+go run .
 ```
 
 ## Step 1: Generating text
